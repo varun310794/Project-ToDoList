@@ -1,0 +1,114 @@
+<html>
+	<head>
+	<title>ToDoListApp</title>
+	<style>
+		#container{
+			box-shadow: 1px 1px 1px 1px rgba(0, 0, 255, .2);
+			width:360px;
+			margin:150 auto;
+		}
+		.completed{
+			text-decoration:line-through;
+		}
+		
+		h1{
+			font-size:27px;
+			font-family:calibri;
+			font-weight:normal;
+			color:white;;
+			background:steelblue;
+			margin:0;
+			padding-left:10px;
+		}
+		li{
+			background:silver;
+			font-family:calibri;
+			list-style:none;
+			font-weight:heavy;
+			}
+		li:nth-child(2n){
+			background:steelblue;
+		}
+		
+		ul{
+			margin:0;
+			padding:0;
+		}
+		input{
+			width:100%;
+			margin-top:0;
+			padding-left:10px;
+			height:50px;
+		}
+		body{
+			background:url("19969-desktop-wallpapers-heisenberg-breaking-bad.jpg");
+			text-transform:uppercase;
+		}
+		
+		.fa-plus{
+			float:right;
+			margin-right:5px;
+			font-size:22px;
+			padding-top:5px;
+		}
+		span{
+			margin-right:20px;
+			display:inline-block;
+			text-align:center;
+			color:white;
+			width:0;
+			height:30px;
+			padding-top:12px;
+			opacity:0;
+			background:red;
+			
+		}
+		li:hover span{
+			width:30px;
+			opacity:5;
+			transition:0.2s linear;
+		}
+
+
+	</style>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+     crossorigin="anonymous"></script>
+	
+	</head>	
+	
+	<body>
+		<div id="container">
+			<h1>To-Do List<i class="fa fa-plus"></i></h1>
+			<input type="text" placeholder="You can add your To-Do here">
+			<ul>
+			</ul>
+		</div>
+	
+	<script>
+		$("ul").on("click","li", function(){
+	$(this).toggleClass("completed");
+});
+
+$("ul").on("click", "span", function(event){
+	$(this).parent().fadeOut(500, function(){
+		$(this).remove();
+	});
+	event.stopPropagation();
+});
+
+$("input").keypress(function(event){
+	if(event.which===13){
+		var inp=$("input").val();
+		$("ul").append("<li><span><i class='fa fa-trash'></i> </span>"+inp+"</li>");
+		$(this).val("");		
+	}
+});
+
+$(".fa-plus").click(function(){
+	$("input").fadeToggle();
+});
+	</script>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "hello",
+    "start": "node app.js"
+  },
+  "author": "varun",
+  "license": "ISC"
+}
